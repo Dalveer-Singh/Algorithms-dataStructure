@@ -1,6 +1,10 @@
 
 /**
- * solution to: https://www.hackerearth.com/practice/codemonk/
+ * solutionTo: Monk and Inversions
+ * solutionTo: https://www.hackerearth.com/practice/codemonk
+ * 
+ * @author https://www.hackerearth.com/@dalveer
+ * @author https://github.com/Dalveer-Singh
  * 
  * Monk's best friend Micro, who happen to be an awesome programmer, got him an
  * integer matrix M of size for his birthday. Monk is taking coding classes from
@@ -67,7 +71,7 @@ class TestClass {
     public static int findCount() {
         count = 0;
         try {
-            int N = Integer.parseInt(br.readLine());
+            int N = Integer.parseInt(br.readLine()); // read size
             int[][] arr = new int[N][N];
             IntStream.range(0, N).forEach(row -> {
                 String[] s = new String[N];
@@ -75,9 +79,15 @@ class TestClass {
                     s = br.readLine().split(" ");
                 } catch (Exception ee) {
                 }
+                /**
+                 * Steps:
+                 * read each line/row of array and save in main array
+                 * then at same time run other loop to compare withh all previos elements
+                 * where previous[i,j] < current[p,k]
+                 * by doing this, its saves us a seprate loop for iterating whole array.
+                 */
                 for (int i = 0; i < N; i++) {
                     arr[row][i] = Integer.parseInt(s[i]);
-
                     for (int trow = row; trow >= 0; trow--) {
                         for (int ti = i; ti >= 0; ti--) {
                             if (arr[trow][ti] > arr[row][i]) {
@@ -87,10 +97,17 @@ class TestClass {
                     }
                 }
             });
-
         } catch (Exception e) {
             System.out.println(e);
         }
         return count;
     }
 }
+
+/**
+ * Feedback requested:
+ * did you find any incorrect/ inefficient coding practice?
+ * 
+ * @author https://www.hackerearth.com/@dalveer
+ * @author https://github.com/Dalveer-Singh
+ */
